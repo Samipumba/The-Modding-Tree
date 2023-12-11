@@ -13,8 +13,9 @@ addLayer("Z", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
-    gainMult() { // Calculate the multiplier for main currency from bonuses
-        mult = new Decimal(1)
+    gainMult() {
+        let mult = new Decimal(1)
+        if (hasUpgrade('Z', 13)) mult = mult.times(upgradeEffect('Z', 13))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -29,9 +30,27 @@ addLayer("Z", {
         11: {
         title: "The First Upgrade",
         description: "Double your point gain.",
-        cost: new Decimal(2),
+        cost: new Decimal(1),
 
         },
-
+        12: {
+            title: "The Second Upgrade",
+            description: "Gain more points based on you Zero Points.",
+            cost: new Decimal(2),
+            effect() {
+                return player[this.layer].points.add(0.1).pow(0.1)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+    
+        },
+        13: {
+                title: "Reverse",
+                description: "Gain more Zero Points based on your Numbers",
+                cost: new Decimal(10),
+                effect() {
+                    return player.points.add(0.2).pow(0.1)
+                },
+                effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+        },
     },
 })
