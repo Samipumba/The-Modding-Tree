@@ -26,7 +26,8 @@ addLayer("Z", {
     ],
     layerShown(){return true}
 })
-upgrades: {11; {
+upgrades: {
+    11; {
 
 }
 
