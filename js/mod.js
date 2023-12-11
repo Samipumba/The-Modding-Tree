@@ -32,8 +32,6 @@ function getStartPoints(){
     return new Decimal(modInfo.initialStartPoints)
 }
 
-if (hasUpgrade('Z', 11)) gain = gain.times(2)
-
 // Determines if it should show points/sec
 function canGenPoints(){
 	return true
@@ -61,6 +59,7 @@ function isEndgame() {
 	return player.points.gte(new Decimal("1e10"))
 }
 
+if (hasUpgrade('Z', 11)) gain = gain.times(2)
 
 
 // Less important things beyond this point!
