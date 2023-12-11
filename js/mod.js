@@ -1,5 +1,5 @@
 let modInfo = {
-	name: "The Level 0 Tree",
+	name: "The Absolute Infinity Tree",
 	id: "thebestmod",
 	author: "Samipumba",
 	pointsName: "Numbers",
