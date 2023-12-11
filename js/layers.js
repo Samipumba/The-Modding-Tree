@@ -27,6 +27,9 @@ addLayer("Z", {
     layerShown(){return true},
     upgrades: {
         11: {
+        title: "The First Upgrade",
+        description: "Double your point gain.",
+        cost: new Decimal(10),
 
         },
 
